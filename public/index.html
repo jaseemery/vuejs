@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html lang="">
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Basic</title>
+    <script src="/page.js"></script>
+    <base href="/" >
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <h1>Basic</h1>
+    <p></p>
+    <ul>
+      <li><a href="./">/</a></li>
+      <li><a href="#whoop">#whoop</a></li>
+      <li><a href="./about.html">/about</a></li>
+      <li><a href="./contact">/contact</a></li>
+      <li><a href="./contact/me">/contact/me</a></li>
+      <li><a href="./not-found?foo=bar">/not-found</a></li>
+    </ul>
+
+    <script>
+      // the "notfound" implements a catch-all
+      // with page('*', notfound). Here we have
+      // no catch-all, so page.js will redirect
+      // to the location of paths which do not
+      // match any of the following routes
+      //
+      page.base('/');
+
+      page('/', index);
+      page('/about', about);
+      page('/contact', contact);
+      page('/contact/:contactName', contact);
+      page();
+
+      function index() {
+        document.querySelector('p')
+          .textContent = 'viewing index';
+      }
+
+      function about() {
+        document.querySelector('p')
+          .textContent = 'viewing about';
+      }
+
+      function contact(ctx) {
+        document.querySelector('p')
+          .textContent = 'viewing contact ' + (ctx.params.contactName || '');
+      }
+    </script>
   </body>
 </html>
+
