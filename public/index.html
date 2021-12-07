@@ -4,9 +4,35 @@
     <title>jemery.dev</title>
     <script src="/page.js"></script>
     <base href="/" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+/>
   </head>
   <body>
-    <h1>jemery.dev</h1>
+    
+    <h1>jemery.dev
+      <template lang="html">
+        <div>
+          <sui-icon size="mini" name="home" />
+          <sui-icon size="tiny" name="home" />
+          <sui-icon size="small" name="home" />
+          <sui-icon size="small" name="home" />
+          <sui-icon name="home" />
+          <sui-icon size="large" name="home" />
+          <sui-icon size="big" name="home" />
+          <sui-icon size="huge" name="home" />
+          <sui-icon size="massive" name="home" />
+        </div>
+      </template>
+      
+      <script>
+      export default {
+        name: 'SizeExample',
+      };
+      </script>
+    </h1>
     <p></p>
     <ul>
       <li><a href="./">Home</a></li>
@@ -14,7 +40,18 @@
       <li><a href="./about.html">About</a></li>
       <li><a href="./contact.html">Contact</a></li>
     </ul>
-
+    <template lang="html">
+      <div>
+        <sui-button primary>Primary</sui-button>
+        <sui-button secondary>Secondary</sui-button>
+      </div>
+    </template>
+    
+    <script>
+    export default {
+      name: 'ButtonEmphasisExample',
+    };
+    </script>
     <script>
       // the "notfound" implements a catch-all
       // with page('*', notfound). Here we have
@@ -29,6 +66,7 @@
       page('/schedule', contact);
       page('/contact/:contactName', contact);
       page();
+
 
       function index() {
         document.querySelector('p')
